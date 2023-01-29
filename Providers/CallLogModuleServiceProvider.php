@@ -123,4 +123,6 @@ class CallLogModuleServiceProvider extends ServiceProvider {
 	public function provides() {
 		return [];
 	}
+
+
 }

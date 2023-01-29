@@ -1,3 +1,10 @@
 <div>
-    hellow eolr
+    hello worldas asdf
 </div>
+
+<script>
+
+    $(()=>{
+        console.log('hello world')
+    })
+</script>

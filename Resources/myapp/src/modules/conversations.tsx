@@ -1,11 +1,12 @@
-import { Tag } from "antd";
-import { useEffect } from "react";
+import { Modal, Tag } from "antd";
+import { useEffect, useState } from "react";
 import moment from 'moment';
 
 // other codes
 
 
 const Conversations = (props: { calls: {}[] }) => {
+    const [expanded, setExpanded] = useState<boolean>(false);
 
     const { calls } = props;
 
@@ -31,17 +32,33 @@ const Conversations = (props: { calls: {}[] }) => {
         }
         return out;
     };
-
+    const showModal = () => {
+        setExpanded(true);
+      };
+    
+      const handleOk = () => {
+        setExpanded(false);
+      };
+    
+      const handleCancel = () => {
+        setExpanded(false);
+      };
 
     return (
         <div
             style={{
                 width: '100%',
                 height: '100%',
-                maxHeight: '300px',
+                maxHeight: (expanded ? '100%' : '300px'),
                 overflowY: 'auto',
                 overflowX: 'hidden',
-            }}>
+            }}
+            onClick={() => setExpanded(!expanded)}
+            >
+
+
+      
+
             {calls && (calls).map((call: any) => {
                 return (
                     <div key={call.id} style={{
@@ -74,6 +91,11 @@ const Conversations = (props: { calls: {}[] }) => {
                                 title={call.user_name}
                                 
                                 ></div>
+                                 {call.call_type === 'in' ?
+                                    <Tag style={{ float: 'right', transform: 'scale(.8)', margin:'auto'}} color="#f50">Inbound</Tag> :
+                                    <Tag style={{ float: 'right', transform: 'scale(.8)', margin:'auto' }} color="#87d068">Outbound</Tag>
+
+                                }
                                 {/* <div style={{textAlign:'center'}}>
                                {call.user_name}
                                </div> */}
@@ -96,11 +118,7 @@ const Conversations = (props: { calls: {}[] }) => {
                                         }}>
                                             {call.id + ' - ' + (call.call_notes ? call.call_notes : 'No notes...')}
                                         
-                                            {call.call_type === 'in' ?
-                                    <Tag style={{ float: 'right', transform: 'scale(.8)', margin:'auto'}} color="#f50">Inbound</Tag> :
-                                    <Tag style={{ float: 'right', transform: 'scale(.8)', margin:'auto' }} color="#87d068">Outbound</Tag>
-
-                                }
+                                           
                                         </span>
 
                                     </div>
@@ -120,6 +138,10 @@ const Conversations = (props: { calls: {}[] }) => {
 
 
             })}
+
+                <Modal title="Basic Modal" open={expanded} onOk={handleOk} onCancel={handleCancel}>
+                
+                </Modal>
         </div>
     )
 }

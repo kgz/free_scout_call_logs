@@ -5,6 +5,7 @@ Route::group( [ 'middleware' => 'web', 'prefix' => Helper::getSubdirectory(), 'n
 // 	Route::get( '/calendar/ajax', [ 'uses' => 'LJPcCalendarModuleController@getItems' ] )->name( 'ljpccalendarmodule.ajax' );
 // 	Route::post( '/calendar/ajax', [ 'uses' => 'LJPcCalendarModuleController@ajax' ] )->name( 'ljpccalendarmodule.ajax' );
 // } );
+	Route::get( '/calls', [ 'uses' => 'CallLogModuleController@index' ] )->name( 'calllog.index' );
 
 // Route::group( [ 'prefix' => Helper::getSubdirectory(), 'namespace' => 'Modules\LJPcCalendarModule\Http\Controllers' ], function () {
 // 	Route::get( '/calendar/{id}', [ 'uses' => 'LJPcCalendarModuleController@export' ] )->name( 'ljpccalendarmodule.external' );

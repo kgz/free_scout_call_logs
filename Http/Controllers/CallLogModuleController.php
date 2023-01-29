@@ -25,6 +25,15 @@ class CallLogModuleController extends Controller {
 	 * @return Factory|Application|View
 	 */
 
+	 public function index() {
+		$allCalendars = [];
+
+
+		return view( 'CallLogModule::index', [
+			'calendars' => json_encode( $allCalendars ),
+		] );
+
+	}
 
 	public function addCall(){
 

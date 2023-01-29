@@ -67,9 +67,7 @@ const Container = () => {
             }}
             >
                 <div style={{ color: '#918c8c', fontSize: 15, fontWeight: 'bolder' }}>
-
                     Call Log
-
                     <div
                         style={{
                             float: 'right',
@@ -112,7 +110,7 @@ const Container = () => {
                         onClick={() => setShowAdd(true)}
                     >Add Call</div>
 
-                    <Conversations calls={calls} />
+                    <Conversations calls={calls}  />
                 </>
             }
         </div>
